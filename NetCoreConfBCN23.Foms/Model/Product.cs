@@ -6,10 +6,9 @@ namespace NetCoreConfBCN23.Foms.Model
     public class Product
     {
         public string? Id { get; set; }
-        [Required()]
+        [Required]
         public string Name { get; set; }
         [Required]
-        [StartsWithLetter]
         public string? Ref { get; set; }
 
         [Required]
