@@ -1,0 +1,80 @@
+﻿@page "/"
+
+
+<PageTitle>Index</PageTitle>
+
+<h2>Binding. Text Property</h2>
+<input @bind="name" />
+<p>Hello, @name</p>
+
+
+<h2>Binding. Text Property2</h2>
+<input value="@name" @oninput="OnInput" />
+<p>Hello, @name</p>
+
+<h2>Binding. Number Property</h2>
+<input @bind="repeater" />
+@for (var i = 1; i <= repeater; i++)
+{
+    <p>@i. Contando</p>
+}
+
+<h2>Binding. Bool Property</h2>
+<input type="checkbox" @bind="isChecked" />
+@if (isChecked)
+{
+    <p>Checkbox is checked</p>
+}
+else
+{
+    <p>Checkbox isn't checked</p>
+}
+
+<h2>Binding. Click event</h2>
+<button @onclick="IncrementCount">+1</button>
+<button @onclick="()=>SetCount(5)">Set 5</button>
+<p>Counter is @currentCount</p>
+
+<h2>Binding. OnChanged event</h2>
+<input @onchange="OnChanged" value="@changedName" />
+Hi @changedName
+
+<h2>Binding. OnKeyDown event</h2>
+<input value="@numberValue" @onkeydown="KeyDown" @onkeydown:preventDefault />
+
+@code {
+    string name = "Cristian";
+    string changedName = "Pedro";
+    int repeater = 5;
+    bool isChecked = false;
+    private int currentCount = 0;
+    string numberValue = string.Empty;
+
+    private void OnInput(ChangeEventArgs e)
+    {
+        name = "NetCoreConf";
+    }
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private void SetCount(int value)
+    {
+        currentCount = value;
+    }
+
+    private void OnChanged(ChangeEventArgs args)
+    {
+        changedName = args.Value.ToString();
+    }
+
+    private void KeyDown(KeyboardEventArgs args)
+    {
+        if (args.Code.StartsWith("Digit"))
+        {
+            numberValue += args.Key;
+        }
+    }
+}
