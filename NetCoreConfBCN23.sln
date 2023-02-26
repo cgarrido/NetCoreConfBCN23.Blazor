@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreConfBCN23.Foms", "NetCoreConfBCN23.Foms\NetCoreConfBCN23.Foms.csproj", "{BA617E5C-28D3-4BEE-A39F-26BB99F45BED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA617E5C-28D3-4BEE-A39F-26BB99F45BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA617E5C-28D3-4BEE-A39F-26BB99F45BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA617E5C-28D3-4BEE-A39F-26BB99F45BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA617E5C-28D3-4BEE-A39F-26BB99F45BED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CF2308C-B1BA-46D2-BC3B-E00A353F268A}
+	EndGlobalSection
+EndGlobal
