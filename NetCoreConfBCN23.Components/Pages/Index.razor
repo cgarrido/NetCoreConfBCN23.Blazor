@@ -1,0 +1,32 @@
+﻿@page "/"
+@using NetCoreConfBCN23.Components.Model
+
+<PageTitle>Index</PageTitle>
+
+<h1>Components!</h1>
+
+<Hello Name="Joselito"></Hello>
+<Hello Name="Pepito"></Hello>
+<Hello Name="Juanito"></Hello>
+
+<Table Items="students" TItem="Student">
+    <TableHeader>
+        <th>Name</th>
+        <th>Age</th>
+    </TableHeader>
+    <RowTemplate>
+        <td style="background-color:firebrick">@context.Name</td>
+        <td>@context.Age</td>
+    </RowTemplate>
+</Table>
+<Films></Films>
+<Counter></Counter>
+
+@code {
+    private List<Student> students = new()
+    {
+        new Student { Id = 2, Name = "Pepito", Age = 24 },
+        new Student { Id = 4, Name = "Juanito", Age = 36 },
+        new Student { Id = 7, Name = "Joselito", Age = 62 }
+    };
+}

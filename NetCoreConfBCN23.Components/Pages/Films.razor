@@ -1,0 +1,24 @@
+﻿@page "/Films"
+@using NetCoreConfBCN23.Components.Model;
+<h3>Films</h3>
+
+<Table Items="films" TItem="Film">
+    <TableHeader>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Year</th>
+    </TableHeader>
+    <RowTemplate>
+        <td>@context.Id</td>
+        <td><b>@context.Name</b></td>
+        <td>@context.Year</td>
+    </RowTemplate>
+</Table>
+@code {
+    private List<Film> films = new()
+    {
+        new Film { Id = 2, Name = "Harry Potter", Year = 1965 },
+        new Film { Id = 4, Name = "Avatar", Year = 1988 },
+        new Film { Id = 7, Name = "El señor de los anillos", Year = 2005 }
+    };
+}
