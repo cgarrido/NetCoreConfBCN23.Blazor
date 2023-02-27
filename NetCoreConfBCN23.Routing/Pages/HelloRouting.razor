@@ -1,0 +1,41 @@
+﻿@page "/hello"
+@page "/hello/{name}"
+@page "/hello/{name}/{age:int}"
+
+
+<div>
+    @if (Age != null)
+    {
+        @: Hi @Name. You are @Age years old      
+
+    }
+    else
+    {
+        @: Hi @Name
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "Name")]
+    public string NameQS { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "age")]
+    public int? Age { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Name = Name ?? NameQS ?? "Anonymous";
+        base.OnInitialized();
+    }
+
+    //protected override void OnParametersSet()
+    //{
+    //    Name = Name ?? NameQS ?? "Anonymous";
+    //    base.OnParametersSet();
+    //}
+}
