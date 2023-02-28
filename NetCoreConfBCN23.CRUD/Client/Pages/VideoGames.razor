@@ -1,0 +1,48 @@
+﻿@inject HttpClient Http
+@using NetCoreConfBCN23.CRUD.Shared;
+@using NetCoreConfBCN23.CRUD.Client.Components;
+@using System.Net.Http.Json;
+<h3>VideoGames</h3>
+@if(@videoGames != null)
+{
+    if (videoGames.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var videoGame in videoGames)
+                {
+                    <tr>
+                        <td><a href="/VideoGameDetail/@videoGame.Id">@videoGame.Name</a></td>
+                        <td>@videoGame.Category</td>
+                        <td>@videoGame.Date.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <span>No hay datos</span>
+    }
+}
+else
+{
+    <Spinner></Spinner>
+}
+@code {
+    private IEnumerable<VideoGame> videoGames;
+
+    protected override async Task OnInitializedAsync()
+    {
+        videoGames = await Http.GetFromJsonAsync<IEnumerable<VideoGame>>("api/VideoGames");
+        
+        await base.OnInitializedAsync();
+    }
+}

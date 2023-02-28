@@ -1,0 +1,80 @@
+﻿@inject HttpClient Http
+@page "/VideoGameDetail/{Id:int}"
+@page "/VideoGameDetail"
+@using NetCoreConfBCN23.CRUD.Shared;
+
+<h3>VideoGameDetail</h3>
+@Id
+
+@if(videoGame != null)
+{
+    <div class="card">
+        <h5 class="card-header">
+            @header
+        </h5>
+        <div class="card-body">
+            <EditForm Model="@videoGame" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="mb-3">
+                    <label>Name</label>
+                    <InputText type="text" class="form-control" @bind-Value="@videoGame.Name" />
+                    <ValidationMessage For="@(() => @videoGame.Name)" />
+                </div>
+                <div class="mb-3">
+                    <label>Date</label>
+                    <InputDate class="form-control" @bind-Value="@videoGame.Date" />
+                    <ValidationMessage For="@(() => @videoGame.Date)" />
+                </div>
+                <div class="mb-3">
+                    <label>Category</label>
+                    <InputText type="text" class="form-control" @bind-Value="@videoGame.Category" />
+                    <ValidationMessage For="@(() => @videoGame.Category)" />
+                </div>
+                <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                </div>
+            </EditForm>           
+        </div>
+    </div>   
+}
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private VideoGame videoGame;
+    private string header;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id.HasValue) 
+        {
+            videoGame = await Http.GetFromJsonAsync<VideoGame>($"api/VideoGames/{Id}");
+        }
+        else 
+        { 
+            videoGame = new VideoGame();
+        }
+
+        SetHeader();
+        await base.OnParametersSetAsync();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        HttpResponseMessage response;
+        if (Id.HasValue) response = await Http.PutAsJsonAsync<VideoGame>("api/VideoGames", videoGame);
+        else response = await Http.PostAsJsonAsync<VideoGame>("api/VideoGames", videoGame);
+
+        if (response.IsSuccessStatusCode)
+        {
+            videoGame = await response.Content.ReadFromJsonAsync<VideoGame>();
+        }
+        SetHeader();
+    }
+
+    private void SetHeader()
+    {
+        if (Id.HasValue) header = videoGame.Name;        
+        else header = "Nuevo elemento";    
+    }
+}
