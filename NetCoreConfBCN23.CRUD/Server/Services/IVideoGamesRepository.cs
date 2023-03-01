@@ -7,6 +7,6 @@ namespace NetCoreConfBCN23.CRUD.Server.Services
         IEnumerable<VideoGame> Get();
         VideoGame? Get(int id);
         VideoGame Add(VideoGame obj);
-        void Delete(VideoGame obj);
+        void Delete(int id);
     }
 }

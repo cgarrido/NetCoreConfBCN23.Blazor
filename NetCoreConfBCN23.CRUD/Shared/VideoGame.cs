@@ -11,9 +11,9 @@ namespace NetCoreConfBCN23.CRUD.Shared
         public string? Name { get; set; }
 
         [Required]
-        public DateOnly Date { get; set; }
+        public DateOnly? Date { get; set; }
 
         [Required]
-        public string Category { get; set; }
+        public string? Category { get; set; }
     }
 }

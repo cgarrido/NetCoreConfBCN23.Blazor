@@ -29,8 +29,9 @@ namespace NetCoreConfBCN23.CRUD.Server.Services
             return obj;
         }
 
-        public void Delete(VideoGame obj)
+        public void Delete(int id)
         {
+            var obj = _videoGames.FirstOrDefault(v => v.Id == id);
             _videoGames.Remove(obj);
         }
 

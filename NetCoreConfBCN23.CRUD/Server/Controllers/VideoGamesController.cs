@@ -35,5 +35,12 @@ namespace NetCoreConfBCN23.CRUD.Server.Controllers
             var videoGame = _videoGamesRepository.Add(obj);
             return Ok(videoGame);
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            _videoGamesRepository.Delete(id);
+            return Ok();
+        }
     }
 }
