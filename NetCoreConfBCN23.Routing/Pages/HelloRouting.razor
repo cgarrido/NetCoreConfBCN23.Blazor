@@ -24,7 +24,6 @@
     public string NameQS { get; set; }
 
     [Parameter]
-    [SupplyParameterFromQuery(Name = "age")]
     public int? Age { get; set; }
 
     protected override void OnInitialized()

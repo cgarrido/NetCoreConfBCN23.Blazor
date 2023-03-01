@@ -8,7 +8,11 @@ namespace NetCoreConfBCN23.CRUD.Server.Services
         { 
             new VideoGame() { Id = 1, Date = new DateOnly(2023, 1, 31), Name = "Hogwarts Legacy", Category = "CAT1"},
             new VideoGame() { Id = 2, Date = new DateOnly(2022, 5, 11), Name = "God of War Ragnarok", Category = "CAT85"},
-            new VideoGame() { Id = 3, Date = new DateOnly(2022, 10, 25), Name = "Fifa 23", Category = "CAT1"}
+            new VideoGame() { Id = 3, Date = new DateOnly(2022, 5, 6), Name = "Fifa 23", Category = "CAT1"},
+            new VideoGame() { Id = 3, Date = new DateOnly(2021, 4, 5), Name = "Half Life 2", Category = "CAT123"},
+            new VideoGame() { Id = 3, Date = new DateOnly(2012, 3, 12), Name = "Portal 2", Category = "CAT1"},
+            new VideoGame() { Id = 3, Date = new DateOnly(2008, 2, 18), Name = "Red Dead Redemption 2", Category = "CAT25"},
+            new VideoGame() { Id = 3, Date = new DateOnly(2023, 1, 1), Name = "Grand Theft Auto V", Category = "CAT36"}
         };
 
         public VideoGame Add(VideoGame obj)
